@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Прогноз композитов</title>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Параметры для предсказания</h1>
+        <form action="{{ url_for('main') }}" method="post">
+          <div class="grid-container">
+                <div class="input-group"><label>Плотность (кг/м3)</label><input name="density" type="number" step="any"  required></div>
+                <div class="input-group"><label>Модуль упругости (ГПа)</label><input name="elasticity_modulus" type="number" step="any"  required></div>
+                <div class="input-group"><label>Отвердитель (м.%)</label><input name="hardener_qty" type="number" step="any" required></div>
+                <div class="input-group"><label>Эпоксидные группы (%)</label><input name="epoxy_groups" type="number" step="any"  required></div>
+                <div class="input-group"><label>Температура вспышки (С)</label><input name="flash_point" type="number" step="any"  required></div>
+                <div class="input-group"><label>Поверхн. плотность (г/м2)</label><input name="surface_density" type="number" step="any" required></div>
+                <div class="input-group"><label>Модуль при раст. (ГПа)</label><input name="tensile_modulus" type="number" step="any" required></div>
+                <div class="input-group"><label>Прочность (МПа)</label><input name="tensile_strength" type="number" step="any"  required></div>
+                <div class="input-group"><label>Потребление смолы (г/м2)</label><input name="resin_consumption" type="number" step="any" required></div>
+                <div class="input-group"><label>Угол нашивки</label><input name="angle" type="number" step="any" placeholder="0 или 90" required></div>
+                <div class="input-group"><label>Шаг нашивки</label><input name="step" type="number" step="any" required></div>
+                <div class="input-group"><label>Плотность нашивки</label><input name="patch_density" type="number" step="any" required></div>
+            </div>
+            <button type="submit">Рассчитать результат</button>
+        </form>
+
+        {% if result %}
+        <div class="res-box">
+            Прогноз соотношения матрица-наполнитель: {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
